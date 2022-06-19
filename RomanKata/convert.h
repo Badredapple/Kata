@@ -3,6 +3,11 @@
 std::string convert(unsigned int number)
 {
 	std::string romanNumber;
+	while(number >= 100)
+	{
+		romanNumber += "C";
+		number-=100;
+	}	
 	while(number >= 10)
 	{
 		romanNumber += "X";

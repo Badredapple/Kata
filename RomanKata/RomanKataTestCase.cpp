@@ -63,4 +63,7 @@ TEST(RomanKataTestCase, conversionOfArabicNumbers){
 	assertThat(20).isConvertedtoNumber("XX");
 	assertThat(30).isConvertedtoNumber("XXX");
 	assertThat(32).isConvertedtoNumber("XXXII");
+	assertThat(100).isConvertedtoNumber("C");
+	assertThat(200).isConvertedtoNumber("CC");
+	assertThat(300).isConvertedtoNumber("CCC");
 }
