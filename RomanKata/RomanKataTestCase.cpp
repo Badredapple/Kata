@@ -26,6 +26,10 @@ TEST(RomanKataTestCase, 10_convertto_X){
 	ASSERT_EQ("X", convert(10));
 }
 
-TEST(RomanKataTestCase, 20_convertto_X){
+TEST(RomanKataTestCase, 20_convertto_XX){
 	ASSERT_EQ("XX", convert(20));
+}
 
+TEST(RomanKataTestCase, 30_convertto_XXX){
+	ASSERT_EQ("XXX", convert(30));
+}
