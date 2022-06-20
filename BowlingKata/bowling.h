@@ -12,13 +12,27 @@ class Game{
         int total_score() 
         { 
             int score = 0;
-            for(int i = 0; i < rolls.size(); i++)
+            int frameIndex = 0;
+            for(int frame = 0; frame < 10; frame++)
             {
-                score += rolls[i];
+                if(isSpare(frameIndex))
+                {
+                    score += 10 + rolls[frameIndex+2];
+                    frameIndex+= 2;
+                }else{
+                    score += rolls[frameIndex] + rolls[frameIndex+1];
+                    frameIndex+= 2;
+                }
             }
             return score; 
         }
+
     private:
         std::vector<int> rolls;
         int currentRoll = 0;
+        
+        bool isSpare(int frameIndex)
+        {
+            return rolls[frameIndex] + rolls[frameIndex+1] == 10;
+        }
 };
