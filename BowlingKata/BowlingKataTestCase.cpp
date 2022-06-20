@@ -46,3 +46,10 @@ TEST(BowlingKataTestCase, oneStrike){
         g.roll(0);
     EXPECT_EQ(20, g.total_score());
 }
+
+TEST(BowlingKataTestCase, perfectGame){
+    Game g;
+    for(int i = 0; i < 12; i++)
+        g.roll(10);
+    EXPECT_EQ(300, g.total_score());
+}
