@@ -1,19 +1,24 @@
 #include <gmock/gmock.h>
 #include "Soundex.h"
-using testing::Eq;
+using namespace testing;
 
-TEST(SoundexEncoding, RetainsSoleLetterOfOneLetterWord)
+class SoundexEncoding: public Test{
+    public:
+        Soundex soundex;
+};
+
+TEST_F(SoundexEncoding, RetainsSoleLetterOfOneLetterWord)
 {
-    Soundex soundex;
-    auto encoded = soundex.encode("A");
-    ASSERT_THAT(encoded, Eq("A000"));
+    ASSERT_THAT(soundex.encode("A"), Eq("A000"));
 }
 
-TEST(SoundexEncoding, PadsWithZerosToEnSureTreeDigits)
+TEST_F(SoundexEncoding, PadsWithZerosToEnSureTreeDigits)
 {
-    Soundex soundex;
-    auto encoded = soundex.zeroPad("I");
-    ASSERT_THAT(encoded, Eq("I000"));
-    auto encoded = soundex.zeroPad("A");
-    ASSERT_THAT(encoded, Eq("A000"));
+    ASSERT_THAT(soundex.encode("I"), Eq("I000"));
+    ASSERT_THAT(soundex.encode("A"), Eq("A000"));
+}
+
+TEST_F(SoundexEncoding, ReplacesConsonantsWithAppropriareDigits)
+{
+    ASSERT_THAT(soundex.encode("Ab"), Eq("A100"));
 }
