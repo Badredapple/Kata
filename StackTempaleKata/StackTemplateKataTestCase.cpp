@@ -28,3 +28,14 @@ TEST(StackTemplateKataTestCase, basic){
 	intStack.pop();
 	EXPECT_EQ(1.0, intStack.top());
 }
+
+TEST(StackTemplateKataTestCase, convert){
+	Stack<int> intStack;
+	intStack.empty();
+	intStack.push(1);
+	intStack.push(2);
+
+	Stack<float> fStack;
+	fStack = intStack;
+	EXPECT_EQ(2.0, fStack.top());
+}

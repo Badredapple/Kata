@@ -13,6 +13,9 @@ class Stack{
         bool empty() const {
             return elems.empty();
         }
+
+        template<typename T2>
+        Stack& operator=(Stack<T2> const&);
 };
 
 template<typename T>
@@ -33,4 +36,17 @@ T const& Stack<T>::top() const
 {
     assert(! elems.empty());
     return elems.back();
+}
+
+template<typename T>
+    template<typename T2>
+Stack<T>& Stack<T>::operator= (Stack<T2> const& op2)
+{
+    Stack<T2> tmp(op2);
+    while(! tmp.empty()){
+        elems.push_front(tmp.top());
+        tmp.pop();
+    }
+
+    return *this;
 }
