@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
 #include "stack.h"
+#include <vector>
 
 int main(int agrc, char ** argv)
 {
@@ -38,4 +39,12 @@ TEST(StackTemplateKataTestCase, convert){
 	Stack<float> fStack;
 	fStack = intStack;
 	EXPECT_EQ(2.0, fStack.top());
+}
+
+// template template parameters
+TEST(StackTemplateKataTestCase, template_tempalet_parameters){
+	Stack<double, std::vector> vStack;
+	vStack.push(5.5);
+	vStack.push(6.6);
+	EXPECT_EQ(6.6, vStack.top());
 }
