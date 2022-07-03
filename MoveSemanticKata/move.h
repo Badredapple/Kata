@@ -17,14 +17,8 @@ void g (Move&&) {
 }
 
 // let f() forward argument val to g()
-void f(Move& val){
-	g(val);
-}
-
-void f(Move const& val){
-	g(val);
-}
-
-void f(Move&& val){
-	g(std::move(val));
+template<typename T>
+void f(T&& val)
+{
+	g(std::forward<T>(val));
 }
